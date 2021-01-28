@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-25 14:25:12
- * @LastEditTime: 2021-01-23 14:44:16
+ * @LastEditTime: 2021-01-28 11:13:45
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\router\index.js
@@ -9,7 +9,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import store from "../store/state";
 import { MessageBox } from "element-ui";
 
 Vue.use(VueRouter);
