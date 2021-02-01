@@ -3,7 +3,7 @@
  * @Author: ZhangChen
  * @Date: 2021-01-23 14:05:36
  * @LastEditors: ZhangChen
- * @LastEditTime: 2021-01-23 14:53:28
+ * @LastEditTime: 2021-01-28 15:41:47
  * @FilePath: \testpro\src\views\login.vue
 -->
 <template>
@@ -26,7 +26,7 @@ export default {
     // 点击登录修改状态
     clkLogin() {
       // console.log(this.loginStatus, "loginStatus");
-      this.login(true);
+      sessionStorage.setItem("loginStatus", true);
       this.$confirm("登录成功", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -39,7 +39,11 @@ export default {
     },
   },
   created() {},
-  mounted() {},
+  mounted() {
+    let loginStatus = sessionStorage.getItem("loginStatus");
+    this.login(loginStatus);
+    console.log(this.loginStatus, "vuex - loginStatus");
+  },
 };
 </script>
 <style lang="less" scoped></style>

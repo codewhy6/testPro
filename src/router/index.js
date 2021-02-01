@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-25 14:25:12
- * @LastEditTime: 2021-01-28 11:13:45
+ * @LastEditTime: 2021-01-28 15:51:12
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\router\index.js
@@ -9,6 +9,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import store from "../store/state";
 import { MessageBox } from "element-ui";
 
 Vue.use(VueRouter);
@@ -95,9 +96,14 @@ router.beforeEach((to, from, next) => {
   //如果包含则代表需要进行用户登录状态的检测
   if (to.meta.requiresAuth) {
     //检测用户是否登录了?
+    console.log(
+      sessionStorage.getItem("loginStatus"),
+      'sessionStorage.getItem("loginStatus")'
+    );
     if (
       store.loginStatus == false ||
-      sessionStorage.getItem("loginStatus") == false
+      sessionStorage.getItem("loginStatus") == false ||
+      sessionStorage.getItem("loginStatus") == "false"
     ) {
       // 提示
       MessageBox.confirm("您还未登录，请先登录！", "提示", {

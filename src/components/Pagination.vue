@@ -3,7 +3,7 @@
  * @Author: ZhangChen
  * @Date: 2020-12-23 14:21:39
  * @LastEditors: ZhangChen
- * @LastEditTime: 2021-01-22 15:06:49
+ * @LastEditTime: 2021-01-28 15:48:14
  * @FilePath: \testpro\src\components\Pagination.vue
 -->
 
@@ -73,7 +73,9 @@ export default {
     },
   },
   created() {},
-  mounted() {},
+  mounted() {
+    console.log(this.$store.state.loginStatus, "loginStatus");
+  },
 };
 </script>
 <style lang="less" scoped>
