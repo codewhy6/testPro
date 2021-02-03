@@ -3,7 +3,7 @@
  * @Author: ZhangChen
  * @Date: 2021-01-12 10:21:13
  * @LastEditors: ZhangChen
- * @LastEditTime: 2021-01-19 13:11:07
+ * @LastEditTime: 2021-02-03 12:06:27
  * @FilePath: \testpro\src\components\areaPicker.vue
 -->
 <template>
@@ -228,14 +228,14 @@ export default {
   mounted() {
     // this.getLocation();
     // this.$http
-    //   .get("/api/ws/geocoder/v1", {
+    //   .get("/api/api2/ws/location/v1/ip", {
     //     params: {
     //       key: "FKSBZ-LCQCW-OO5RF-RTN4E-XDQH3-Y7FHL",
-    //       location: "39.984154,116.307490",
+    //       location: returnCitySN.cip,
     //     },
     //   })
     //   .then((res) => {
-    //     console.log(res);
+    //     console.log(res, "getIp");
     //     if (res.data.status == 0) {
     //       console.log(res.data.result, "l");
     //     }

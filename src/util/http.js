@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 axios.defaults.timeout = 50000;
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+axios.defaults.baseURL = process.env.VUE_APP_BASE_API;
 // axios.defaults.baseURL = "/api";
 // axios.defaults.baseURL = "https://api.liuyanzb.com/";
 
@@ -12,6 +12,86 @@ axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
  * @param {*}
  * @return {*}
  */
+axios.interceptors.request.use(
+  (config) => {
+    // console.log(config, "config");
+    config.data = qs.stringify(config.data); // 转换
+    config.headers = {
+      version: "v5",
+      timekey: "8833619307876792ss",
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8 ",
+      device: "1",
+    };
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+//响应拦截器即异常处理
+axios.interceptors.response.use(
+  (response) => {
+    // console.log(response, "初始变化");
+    if (response.data.respCode == 400) {
+      // console.log(response.data);
+    } else {
+      let res = response;
+      // console.log(res);
+      if (res.data.respCode == "0000" && res.data.data) {
+        res.data.data = JSON.parse(response.data.data);
+      }
+      // console.log(res,"request")
+      return res;
+    }
+  },
+  (err) => {
+    if (err && err.response) {
+      switch (err.response.status) {
+        case 400:
+          console.log("错误请求");
+          break;
+        case 401:
+          console.log("未授权，请重新登录");
+          break;
+        case 403:
+          console.log("拒绝访问");
+          break;
+        case 404:
+          console.log("请求错误,未找到该资源");
+          break;
+        case 405:
+          console.log("请求方法未允许");
+          break;
+        case 408:
+          console.log("请求超时");
+          break;
+        case 500:
+          console.log("服务器端出错");
+          break;
+        case 501:
+          console.log("网络未实现");
+          break;
+        case 502:
+          console.log("网络错误");
+          break;
+        case 503:
+          console.log("服务不可用");
+          break;
+        case 504:
+          console.log("网络超时");
+          break;
+        case 505:
+          console.log("http版本不支持该请求");
+          break;
+        default:
+          console.log(`连接错误${err.response.status}`);
+      }
+    } else {
+      console.log("连接到服务器失败");
+    }
+    return Promise.resolve(err.response);
+  }
+);
 // axios.interceptors.request.use(
 //   (config) => {
 //     config.data = qs.stringify(config.data); // 转换

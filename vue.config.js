@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-27 15:10:20
- * @LastEditTime: 2021-01-15 10:37:28
+ * @LastEditTime: 2021-02-03 15:42:54
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\vue.config.js
@@ -21,23 +21,31 @@ module.exports = {
     https: false,
     // 以上的ip和端口是我们本机的;下面为需要跨域的
     proxy: {
+      "/api/api2": {
+        target: `https://apis.map.qq.com`,
+        ws: true,
+        changOrigin: true, //允许跨域
+        pathRewrite: {
+          ["^" + "/api/api2"]: "", //请求的时候使用这个api就可以
+        },
+      },
+      "/api/h5pay": {
+        target: `https://m.liuyanzb.com/OfflinePay/`,
+        ws: true,
+        changOrigin: true, //允许跨域
+        pathRewrite: {
+          ["^" + "/api/h5pay"]: "", //请求的时候使用这个api就可以
+        },
+      },
       //配置跨域
       "/api": {
-        target: `https://apis.map.qq.com`, //测试接口
+        target: "http://csapi.liuyanzb.com", //测试接口
         ws: true,
         changOrigin: true, //允许跨域
         pathRewrite: {
           ["^" + "/api"]: "", //请求的时候使用这个api就可以
         },
       },
-      // "/api2": {
-      //   target: `http://csapi.liuyanzb.com`,
-      //   ws: true,
-      //   changOrigin: true, //允许跨域
-      //   pathRewrite: {
-      //     ["^" + "/api2"]: "", //请求的时候使用这个api就可以
-      //   },
-      // },
     },
   },
   // 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)

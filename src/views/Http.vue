@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-02 11:17:01
- * @LastEditTime: 2020-12-03 13:50:49
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-03 14:45:34
+ * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\views\Http.vue
 -->
@@ -10,34 +10,48 @@
   <div class="http"></div>
 </template>
 <script>
-import { agentRank, getTaskReceiver, getMobileCaptcha } from "../api/index.js";
+import {
+  apiGetVideo,
+  apiGetTopLists,
+  bannerImg,
+  getGiftBag,
+} from "../api/index.js";
 export default {
   data() {
     return {};
   },
   computed: {},
   methods: {
-    agentRank() {
-      agentRank().then((res) => {
+    apiGetTopLists() {
+      apiGetTopLists().then((res) => {
+        console.log(res, "apiGetTopLists");
+      });
+    },
+    apiGetVideo() {
+      apiGetVideo({ type: 1, num: 10 }).then((res) => {
+        console.log(res, "apiGetVideo");
         if (res.code == 200) {
           console.log(res.data);
         }
       });
     },
-    // 图片验证码地址
-    getTaskReceiver() {
-      // console.log(uid,'uid');
-      getTaskReceiver().then((res) => {
-        if (res.code == 200) {
-          console.log(res.data, "getMobileCaptcha图片验证码地址");
-        }
+    bannerImg() {
+      bannerImg({ img_type: 1 }).then((res) => {
+        console.log(res, "bannerImg");
+      });
+    },
+    getGiftBag() {
+      getGiftBag({ type: 1, uid: 25953 }).then((res) => {
+        console.log(res, "getGiftBag");
       });
     },
   },
   created() {},
   mounted() {
-    this.agentRank();
-    this.getTaskReceiver();
+    this.apiGetVideo();
+    // this.apiGetTopLists();
+    this.bannerImg();
+    this.getGiftBag();
   },
 };
 </script>
