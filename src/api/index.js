@@ -3,7 +3,7 @@
  * @Author: ZhangChen
  * @Date: 2020-12-01 10:10:09
  * @LastEditors: ZhangChen
- * @LastEditTime: 2021-02-03 15:39:55
+ * @LastEditTime: 2021-02-19 16:02:53
  * @FilePath: \testpro\src\api\index.js
  */
 
@@ -13,6 +13,8 @@ export const apiGetVideo = (p) => get("/Video/getVideoList", p); //获取短视�
 export const getGiftBag = (p) => post("/Home/getGiftBag", p); // 首充大礼包接口
 
 export const bannerImg = (p) => post("/h5pay/bannerImg", p); // 查询banner营销图片
+export const getAdvList = p => post(`/Index/getAdvList`, p); //获取广告信息 AdBanner
+
 
 export const getMap = (p) => get("/api2/ws/geocoder/v1", p);
 export const getAdress = (p) => get("/api2/ws/geocoder/v1", p);

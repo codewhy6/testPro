@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-27 15:10:20
- * @LastEditTime: 2021-02-03 15:42:54
+ * @LastEditTime: 2021-02-20 09:28:17
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\vue.config.js
@@ -17,6 +17,7 @@ module.exports = {
     disableHostCheck: true,
     open: true,
     host: "localhost",
+    // host: "192.168.1.14",
     port: 8086,
     https: false,
     // 以上的ip和端口是我们本机的;下面为需要跨域的

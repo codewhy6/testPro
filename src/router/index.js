@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-25 14:25:12
- * @LastEditTime: 2021-01-28 15:51:12
+ * @LastEditTime: 2021-02-19 15:56:27
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\router\index.js
@@ -85,6 +85,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "myComps" */ "../views/login.vue"),
   },
+  // Carousel
+  {
+    path: "/carousel",
+    name: "Carousel",
+    component: () =>
+      import(/* webpackChunkName: "myComps" */ "../views/Carousel.vue"),
+  },
 ];
 
 const router = new VueRouter({
@@ -115,7 +122,7 @@ router.beforeEach((to, from, next) => {
           console.log(to, "to");
           router.push("/login?redirect=" + to.fullPath);
         })
-        .catch(() => {});
+        .catch(() => { });
     } else {
       // 放行
       next();
