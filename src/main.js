@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-25 14:25:12
- * @LastEditTime: 2021-01-23 14:46:00
+ * @LastEditTime: 2021-02-22 17:18:26
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\main.js
@@ -28,6 +28,10 @@ import "../src/app.css";
 // 全局的js方法
 import app from "./app";
 Vue.prototype.$app = app;
+
+// 及时通信im
+import tim from '@/util/tim.js'
+Vue.prototype.$tim = tim
 
 // axios
 import axios from "axios";

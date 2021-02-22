@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 14:25:12
- * @LastEditTime: 2021-01-23 14:32:48
+ * @LastEditTime: 2021-02-22 17:19:08
  * @LastEditors: ZhangChen
  * @Description: In User Settings Edit
  * @FilePath: \testpro\src\views\Home.vue
@@ -54,6 +54,7 @@ export default {
   created() {},
   mounted() {
     console.log(this.count);
+    console.log(this.$tim, "this.$tim");
   },
 };
 </script>
